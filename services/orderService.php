@@ -5,7 +5,13 @@ function getConnection() {
 	$user = 'root';
 	$password = 'troiswa';
 
-	$db = new PDO('mysql:host=localhost;dbname=classicmodels', $user, $password);
+	$db = new PDO(
+		'mysql:host=localhost;dbname=classicmodels', 
+		$user, 
+		$password,
+		array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING)
+	);
+
 	$db->exec('SET NAMES UTF8');
 
 	return $db;
@@ -15,7 +21,7 @@ function getOrderList()
 {
 	$db = getConnection();
 
-	$sql = 'SELECT * FROM orders ORDER BY orderNumber DESC';
+	$sql = 'SELECT * FROM ordersss ORDER BY orderNumber DESC';
 
 	$statement = $db->prepare($sql);
 
